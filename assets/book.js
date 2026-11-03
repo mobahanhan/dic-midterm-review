@@ -192,7 +192,7 @@
   menu.addEventListener('click',()=>setMenu(!sidebar.classList.contains('open')));
   shade.addEventListener('click',()=>setMenu(false));
   document.addEventListener('keydown',event=>{
-    if(document.getElementById('figure-dialog').open)return;
+    if(document.querySelector('dialog[open]'))return;
     if(event.key==='Escape') setMenu(false);
     if((event.ctrlKey||event.metaKey)&&event.key.toLowerCase()==='k') {event.preventDefault();if(innerWidth<=800)setMenu(true);input.focus();return;}
     if(event.altKey||event.ctrlKey||event.metaKey||event.shiftKey) return;
