@@ -14,7 +14,7 @@
   const roman=s=>'\\mathrm{'+s+'}';
   const sub=(base,label)=>base+'_{'+label+'}';
   for(const c of 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')put(c,c);
-  const protectedWords=new Set(['aggressor','Cadence','capacitance','Dennard','die','Elmore','fan-in','fan-out','HSPICE','in','input','latch-up','margin','noise','out','overlap','process','regenerator','repeater','RISC-V','slack','slope','up','Verilog','victim','wafer','x86','JavaScript','index.html','pages','assets','Markdown','LaTeX','MATHPLACEHOLDER','.dc','.tran','.measure']);
+  const protectedWords=new Set(['Table','Table1','Table3.3','Value','given','sum','rounded','capacitor','expression','device','Region','Type','Concept','Computing','ON','OFF','aggressor','Cadence','capacitance','Dennard','die','Elmore','fan-in','fan-out','HSPICE','in','input','latch-up','margin','noise','out','overlap','process','regenerator','repeater','RISC-V','slack','slope','up','Verilog','victim','wafer','x86','JavaScript','index.html','pages','assets','Markdown','LaTeX','MATHPLACEHOLDER','.dc','.tran','.measure']);
   const acronyms=['AC','AND','CMOS','DC','DIBL','DIC','EDP','FET','FF','FS','GC','GIDL','GND','HL','IC','KCL','LH','MCF','MOS','MOSFET','NAND','NM','NMOS','OR','PDP','PMOS','PN','PVT','SF','SS','VTC'];
   for(const name of acronyms)put(name,roman(name));
   put('NMH','\\mathrm{NM}_{\\mathrm{H}}');put('NML','\\mathrm{NM}_{\\mathrm{L}}');

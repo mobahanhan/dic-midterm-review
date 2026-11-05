@@ -39,7 +39,7 @@
     });
   }
   function renderContents() {
-    let html=`<a class="navigation-home ${page.seq===0?'active':''}" data-book-link href="${linkTo('index.html')}" ${page.seq===0?'aria-current="page"':''}>从这里开始</a>`;
+    let html=`<a class="navigation-home ${page.seq===0?'active':''}" data-book-link href="${linkTo(book.homeHref||'index.html')}" ${page.seq===0?'aria-current="page"':''}>${book.homeLabel||'从这里开始'}</a>`;
     let open=[];
     try { open=JSON.parse(readStore('dic-nav-open','[]')); } catch {}
     for (const group of book.groups) {
@@ -99,7 +99,7 @@
     nav.innerHTML=`<p class="nav-caption">找到 ${results.length} 个相关页面</p>`+results.map(({page:p})=>{
       const at=Math.max(0,...words.map(w=>fold(p.text).indexOf(w)).filter(n=>n>=0).map(n=>n-35));
       const snippet=(at>0?'…':'')+p.text.slice(at,at+145)+(p.text.length>at+145?'…':'');
-      return `<a class="search-item" href="${linkTo(p.href)}"><small>第 ${p.seq+1} 页</small><strong>${math?math.formatText(p.title,{heading:true,highlight:words}):highlight(p.title,words)}</strong><p>${math?math.formatText(snippet,{highlight:words}):highlight(snippet,words)}</p></a>`;
+      return `<a class="search-item" href="${linkTo(p.href)}"><small>第 ${p.seq+1} 页</small><strong>${math&&!book.homeHref?math.formatText(p.title,{heading:true,highlight:words}):highlight(p.title,words)}</strong><p>${math&&!book.homeHref?math.formatText(snippet,{highlight:words}):highlight(snippet,words)}</p></a>`;
     }).join('');
     if (!results.length) nav.innerHTML+='<p class="empty-result">没有找到匹配页面。试着缩短关键词，或用“术语”索引查找名称。</p>';
     status.textContent=`找到${results.length}个相关页面`;
@@ -212,10 +212,10 @@
   let figureOpener;
   document.querySelectorAll('[data-figure-open]').forEach(button=>button.addEventListener('click',()=>{
     const figure=document.getElementById(button.dataset.figureOpen);
-    const drawing=figure.querySelector('svg').cloneNode(true);
+    const drawing=figure.querySelector('svg,img').cloneNode(true);
     // The clone gets unique accessibility IDs while the original remains intact.
     const title=drawing.querySelector('title'),desc=drawing.querySelector('desc');
-    title.id+='-zoom';desc.id+='-zoom';drawing.setAttribute('aria-labelledby',title.id+' '+desc.id);
+    if(title&&desc){title.id+='-zoom';desc.id+='-zoom';drawing.setAttribute('aria-labelledby',title.id+' '+desc.id);}
     document.getElementById('figure-dialog-title').textContent=figure.querySelector('figcaption strong').textContent;
     document.getElementById('figure-dialog-content').replaceChildren(drawing);
     figureOpener=button;figureDialog.showModal();document.body.classList.add('figure-modal-open');

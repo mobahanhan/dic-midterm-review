@@ -23,6 +23,9 @@
     let output='',previous=null,barOpen=false;
     for(let i=0;i<values.length;i++){
       const original=values[i];let current={...original};
+      if(current.plain==='μ'&&values[i+1]?.normal&&unit.test('μ'+values[i+1].plain)){
+        current={...current,plain:'μ'+values[++i].plain,normal:true};
+      }
       if(current.kind==='apply')continue;
       if(current.kind==='space')continue;
       if(current.kind==='bar'){current.kind=barOpen?'close':'open';barOpen=!barOpen;}
@@ -75,7 +78,7 @@
       if([',','，',';','；'].includes(value))return token(value,'comma');
       if(value==='.'||value==='。'||value===':')return token(value,'punct');
       if(['%','‰','°'].includes(value))return token(value,'postfix');
-      if(/^[=+−\-<>≤≥≈≠∝→←↔⇒×·⋅÷/:]$/.test(value))return token(value==='⋅'?'·':value,'op');
+      if(/^[=+−\-<>≤≥≈≠∝→←↔⇒↑↓×·⋅÷/:]$/.test(value))return token(value==='⋅'?'·':value,'op');
       if(/^[∫∑Σ]$/.test(value))return token(value==='Σ'?'∑':value,'prefix');
       if(functions.has(value))return token(value,'fn');
       return token(value,'atom',{normal:node.getAttribute('mathvariant')==='normal'||name==='mtext',number:name==='mn'});
@@ -115,7 +118,7 @@
     const result=clean(readMath(math,{differentials:/\\int(?:[^A-Za-z]|$)|\\mathrm\{d\}/.test(tex)}).plain);
     mathCache.set(math,result);return result;
   }
-  const skip='button,script,style,noscript,.eyebrow,.article-copy-tools,.figure-tools,.book-facts,.diagram-viewport::before';
+  const skip='button,script,style,noscript,.eyebrow,.article-copy-tools,.figure-tools,.book-facts,.copy-omit,.diagram-viewport::before';
   function serialize(node,options={}){
     if(node.nodeType===Node.TEXT_NODE)return clean(node.textContent).replace(/\s+/g,' ');
     if(node.nodeType===Node.DOCUMENT_FRAGMENT_NODE){
