@@ -34,3 +34,6 @@
 .katex .katex-mathml{position:fixed!important;left:0!important;top:0!important;contain:strict!important}
 
 .source-citation{color:var(--muted);font-size:.95em;overflow-wrap:anywhere}.source-citation:after{content:"（来源）";font-size:.85em}
+
+/* Three course collections */
+.collection-switch{gap:4px}.collection-switch a{font-size:12px;padding:9px 2px;white-space:nowrap}.collection-switch a.selected{color:var(--paper)}
