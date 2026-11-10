@@ -1,0 +1,17 @@
+.self-test-tools{display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px;padding:12px 14px;margin:18px 0;border:1px solid var(--line);border-radius:6px;background:var(--side);font-size:.82em}
+.self-test-tools label{display:flex;align-items:center;gap:8px}
+.self-test-tools select,.self-test-tools button{font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:5px;padding:6px 9px}
+.self-test-tools button{cursor:pointer}
+.self-test-card{margin:12px 0;scroll-margin-top:calc(var(--header-height) + 16px)}
+.self-test-card>summary{line-height:1.6}
+.self-test-card .prompt-zh,.self-test-card .prompt-en{font-style:normal;overflow-wrap:anywhere}
+.self-test-card .prompt-en{font-weight:500}
+.self-test-page[data-prompt=zh] .prompt-en,.self-test-page[data-prompt=en] .prompt-zh,.self-test-page:not([data-prompt=both]) .prompt-divider{display:none}
+.self-test-action{margin-inline-start:.6em;color:var(--muted);font-size:.72em;font-weight:500;white-space:nowrap}
+.self-test-answer{padding-top:13px}
+.self-test-answer h3{margin:0 0 8px;font-size:1.02em}
+.self-test-answer p{margin:0 0 10px}
+.self-test-answer [lang=en]{overflow-wrap:anywhere}
+.self-test-original{color:var(--muted);font-size:.78em}
+.self-test-index li{padding-bottom:7px}
+.self-test-index small{margin-inline-start:.6em;color:var(--muted)}
