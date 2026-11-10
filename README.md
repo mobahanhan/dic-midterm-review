@@ -6,6 +6,7 @@
 
 - [概念解释与定性论述](https://mobahanhan.github.io/dic-midterm-review/concepts/)：97项课程概念、86道定性论述，附考试答案、因果解释、出处与原题覆盖；不单列电阻电容等先导常识。
 - [第一至三章复习题库](https://mobahanhan.github.io/dic-midterm-review/questions/)：184个题目页面，逐题标注来源、知识出处、答案与解析。
+- [English Practice Questions](https://mobahanhan.github.io/dic-midterm-review/questions-en/) · 184 questions with worked solutions and links to the corresponding Chinese pages.
 - 当前HW 64题、复习Homework 41题、其他复习材料59题、自编补缺20题。
 - 88个知识讲解页面、348个术语解释、35幅学习图示；题库另有原题图表及实验曲线。
 - 先解释术语，再使用对应概念和符号。
